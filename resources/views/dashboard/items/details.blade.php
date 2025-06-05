@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>صور المنتج</title>
+    <!-- Custom fonts for this template-->
+    <link href="{{ asset('dashboard/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ asset('dashboard/css/sb-admin-2.min.css') }}" rel="stylesheet">
+    <style>
+        .img_item {
+            height: 280px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+
+
+        .img_item .img:hover {
+            transform: scale(1.1);
+        }
+
+        .content {
+            direction: rtl;
+        }
+
+        .item_details input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: transparent;
+            border-bottom: 1px solid #4268d6;
+            outline: none;
+            text-align: center;
+        }
+
+        .div_img {
+            transform: scale(0.98);
+            margin-top: 20px;
+            height: 400px;
+            background-image: url("img/photo_5816410738955237110_c.jpg");
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+        .info-box {
+            background-color: #f9f9f9;
+            transform: scale(0.98);
+            border: 1px solid #ddd;
+            padding: 15px 20px;
+            border-radius: 10px;
+            width: fit-content;
+            max-width: 100%;
+            margin: 5px auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            font-family: 'Cairo', sans-serif;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 10px;
+            font-size: 16px;
+            direction: rtl;
+        }
+
+        .label {
+            font-weight: bold;
+            color: #333;
+            margin-left: 10px;
+        }
+
+        .value {
+            color: #666;
+        }
+        .desc{
+            transform: scale(.99);
+        }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <i class="fas fa-laugh-wink"></i>
+                </div>
+                <div class="sidebar-brand-text mx-3">MagPro <sup></sup></div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('category.index')}}">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>المنتجات</span></a>
+            </li>
+
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+{{--
+            <li class="nav-item">
+                <a class="nav-link" href="item.html">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>جميع المنتجات</span></a>
+            </li> --}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('users.index')}}">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>المستخدمين </span></a>
+            </li>
+
+            <!-- Nav Item - Tables -->
+
+            <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+                @csrf
+                <button  type="submit"
+                        style="background-color:#474aff;margin-left:10px;margin-top:20px; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s;">
+                    تسجيل الخروج
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <ul class="navbar-nav ml-auto">
+
+                        <div class="topbar-divider d-none d-sm-block"></div>
+
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid content">
+                    <div class="row">
+                        <div class="col-3 img_item">
+                            <div style="width: 100%;
+                            height: 100%;
+                            background-image: url('{{ asset('storage/'.$product->item->image) }}');
+                            background-size: cover;
+                            background-position: center center;
+                            background-repeat: no-repeat;
+                            border-radius: 6px;
+                            transition: 0.2s;" class="img"></div>
+                                 </div>
+                        <div class="col-9">
+                            <div class="row">
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">الصنف :</span>
+                                        <span class="value">{{$product->item->title}}</span>
+                                    </div>
+                                </div>
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">السعر :</span>
+                                        <span class="value">{{$product->item->price}}</span>
+                                    </div>
+                                </div>
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">الخصم :</span>
+                                        <span class="value">{{$product->item->discount}}</span>
+
+                                    </div>
+                                </div>
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">بعد الخصم :</span>
+                                        <span class="value">{{$product->item->price_disc}}</span>
+
+                                    </div>
+                                </div>
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">بلد المصنع :</span>
+                                        <span class="value">{{$product->item->made_in}}</span>
+                                    </div>
+                                </div>
+                                <div class="info-box col-4 ">
+                                    <div class="info-row">
+                                        <span class="label">بيانات اخري:</span>
+                                        <span class="value">{{$product->item->details}}</span>
+                                    </div>
+                                </div>
+                                <div class="info-box col-12 desc">
+                                    <div class="info-row">
+                                        <span class="label">الوصف :</span>
+                                        <span class="value">{{$product->item->description}}</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+@foreach ($items as $item)
+<div style="transform: scale(0.98);margin-top: 20px;height: 400px; background-image: url('{{ asset('storage/'.$item->image) }}');background-size: cover;
+background-position: center center;
+background-repeat: no-repeat;
+border-radius: 6px;
+transition: 0.2s;" class="col-3 div_img">
+</div>
+@endforeach
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('dashboard/vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('dashboard/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('dashboard/js/sb-admin-2.min.js') }}"></script>
+
+    <!-- Page level plugins -->
+    <script src="{{ asset('dashboard/vendor/chart.js/Chart.min.js') }}"></script>
+    <!-- Page level custom scripts -->
+    <script src="{{ asset('dashboard/js/demo/chart-area-demo.js') }}"></script>
+    <script src="{{ asset('dashboard/js/demo/chart-pie-demo.js') }}"></script>
+
+</body>
+
+</html>
